@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato | AAA Monetária UFU</title>
+<meta name="description" content="Fale com a AAA Monetária - Atlética Acadêmica da UFU.">
+<link rel="icon" type="image/png" href="imagens/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bungee&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="paint-drip drip-1"></div>
+<div class="paint-drip drip-2"></div>
+
+<!-- NAV -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html#topo" class="nav-brand">
+      <img src="imagens/logo-circular.png" alt="Logo AAA Monetária" class="nav-logo">
+      <span>MONETÁRIA</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#modalidades">Modalidades</a>
+        <a href="index.html#socios">Sócios</a>
+        <a href="index.html#eventos">Eventos</a>
+        <a href="index.html#gestao">Gestão</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">🌙</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="hero-bg"></div>
+  <span class="section-tag">Fala com a gente</span>
+  <h2 style="font-size:clamp(2.2rem,6vw,3.4rem);">Contato</h2>
+  <p style="color:var(--text-muted); max-width:560px; margin:14px auto 0;">Dúvida, sugestão, parceria ou proposta? Preenche o formulário ou chama a gente direto no WhatsApp.</p>
+</section>
+
+<!-- CONTATO -->
+<section class="section" id="contato">
+  <div class="contato-wrapper">
+    <form class="contato-form" id="contatoForm">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
+
+      <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+      <p class="form-note" id="formNote"></p>
+    </form>
+
+    <div class="contato-info">
+      <a href="https://wa.me/5534996980050" target="_blank" rel="noopener" class="contato-info-card">
+        <span class="contato-info-icon">📱</span>
+        <div>
+          <strong>WhatsApp</strong>
+          <span>+55 34 99698-0050</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/atleticamonetaria/" target="_blank" rel="noopener" class="contato-info-card">
+        <span class="contato-info-icon">📸</span>
+        <div>
+          <strong>Instagram</strong>
+          <span>@atleticamonetaria</span>
+        </div>
+      </a>
+      <a href="index.html" class="contato-info-card">
+        <span class="contato-info-icon">🏠</span>
+        <div>
+          <strong>Voltar ao início</strong>
+          <span>Modalidades, sócios, eventos e gestão</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <img src="imagens/logo-circular.png" alt="Logo AAA Monetária" class="footer-logo">
+  <p>AAA Monetária — Associação Atlética Acadêmica &middot; UFU</p>
+  <p class="footer-cursos">Gestão da Informação &middot; Relações Internacionais &middot; Administração &middot; Economia &middot; Ciências Contábeis</p>
+
+  <div class="social-links footer-social">
+    <a href="https://wa.me/5534996980050" target="_blank" rel="noopener" class="social-icon" aria-label="WhatsApp" title="WhatsApp">
+      <img src="imagens/redes%20sociais/whatsapp-icon.png" alt="WhatsApp">
+    </a>
+    <a href="https://www.instagram.com/atleticamonetaria/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram" title="@atleticamonetaria">
+      <img src="imagens/redes%20sociais/instagram-icon.png" alt="Instagram">
+    </a>
+    <a href="https://www.tiktok.com/@atletica.monetaria" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok" title="@atletica.monetaria">
+      <img src="imagens/redes%20sociais/tiktok-icon.png" alt="TikTok">
+    </a>
+  </div>
+
+  <div class="footer-links">
+    <a href="index.html">Início</a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

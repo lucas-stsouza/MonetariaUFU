@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AAA Monetária UFU | Atlética</title>
+<meta name="description" content="Site oficial da AAA Monetária - Atlética Acadêmica da UFU. Modalidades, sócios, eventos e gestão.">
+<link rel="icon" type="image/png" href="imagens/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bungee&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="paint-drip drip-1"></div>
+<div class="paint-drip drip-2"></div>
+
+<!-- NAV -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#topo" class="nav-brand">
+      <img src="imagens/logo-circular.png" alt="Logo AAA Monetária" class="nav-logo">
+      <span>MONETÁRIA</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navLinks">
+        <a href="#modalidades">Modalidades</a>
+        <a href="#socios">Sócios</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#gestao">Gestão</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">🌙</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="topo">
+  <div class="hero-bg"></div>
+  <img src="imagens/logo-circular.png" alt="" aria-hidden="true" class="hero-watermark">
+  <div class="hero-marks" aria-hidden="true">
+    <span class="mark mark-cifrao mark-1">$</span>
+    <span class="mark mark-m mark-2">M</span>
+    <span class="mark mark-star mark-3">★</span>
+    <span class="mark mark-cifrao mark-4">$</span>
+    <span class="mark mark-star mark-5">★</span>
+    <span class="mark mark-m mark-6">M</span>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-emblem">
+      <div class="emblem-ring">
+        <div class="emblem-inner">
+          <img src="imagens/logo-circular.png" alt="Logo AAA Monetária" class="hero-logo">
+        </div>
+      </div>
+    </div>
+
+    <span class="hero-kicker">Associação Atlética Acadêmica &bull; UFU</span>
+    <h1 class="hero-title">A.A.A <span>MONETÁRIA</span></h1>
+    <p class="hero-subtitle">A casa do tamanduá. A gente joga, treina e faz a festa mais pesada do campus.</p>
+    <div class="hero-buttons">
+      <a href="#modalidades" class="btn btn-primary">Ver modalidades</a>
+      <a href="#socios" class="btn btn-outline">Seja Sócio Tamanduá</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>role pra baixo</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- MODALIDADES -->
+<section class="section" id="modalidades">
+  <div class="section-header">
+    <span class="section-tag">Esportivo</span>
+    <h2>Modalidades</h2>
+    <p>Todas as modalidades da Monetária têm times masculino e feminino. Clique em uma modalidade para ver os detalhes e falar com o organizador.</p>
+  </div>
+  <div class="modalidades-grid" id="modalidadesGrid"></div>
+</section>
+
+<!-- MODAL MODALIDADE -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box modal-modalidade">
+    <div class="modal-hero">
+      <button class="modal-close" data-close aria-label="Fechar">&times;</button>
+      <div class="modal-icon" id="modalIcon"></div>
+      <h3 id="modalTitle"></h3>
+    </div>
+    <div class="modal-body">
+      <h4>Sobre a modalidade</h4>
+      <p id="modalResumo"></p>
+
+      <h4>Dias de treino</h4>
+      <div class="treinos">
+        <div class="treino treino-m">
+          <span>&#9794; Masculino</span>
+          <strong id="modalTreinoM"></strong>
+        </div>
+        <div class="treino treino-f">
+          <span>&#9792; Feminino</span>
+          <strong id="modalTreinoF"></strong>
+        </div>
+      </div>
+
+      <a href="#" target="_blank" rel="noopener" class="btn btn-whatsapp" id="modalWhatsapp">
+        Falar com a organização no WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIOS -->
+<section class="section section-dark" id="socios">
+  <div class="section-header">
+    <span class="section-tag">Sócio Tamanduá</span>
+    <h2>Seja <span class="txt-red">Sócio</span></h2>
+    <p>Vista a camisa da Monetária e aproveite tudo que a maior torcida da UFU oferece.</p>
+  </div>
+
+  <div class="socios-layout">
+    <div class="beneficios-list">
+      <div class="beneficio-row">
+        <span class="beneficio-emoji">🎟️</span>
+        <div>
+          <h4>Entradas no Arq Balada</h4>
+          <p>Acesso garantido e condições especiais nas festas.</p>
+        </div>
+      </div>
+      <div class="beneficio-row">
+        <span class="beneficio-emoji">💸</span>
+        <div>
+          <h4>Descontos e promoções</h4>
+          <p>Preços exclusivos em produtos, eventos e parceiros da atlética.</p>
+        </div>
+      </div>
+      <div class="beneficio-row">
+        <span class="beneficio-emoji">👕</span>
+        <div>
+          <h4>Vantagens em produtos</h4>
+          <p>Prioridade e desconto em camisas, moletons e uniformes.</p>
+        </div>
+      </div>
+      <div class="beneficio-row">
+        <span class="beneficio-emoji">🚌</span>
+        <div>
+          <h4>Viagens e competições</h4>
+          <p>Condições especiais para acompanhar a Monetária em campeonatos.</p>
+        </div>
+      </div>
+      <div class="beneficio-row">
+        <span class="beneficio-emoji">❤️</span>
+        <div>
+          <h4>Fazer parte da família</h4>
+          <p>Você ajuda a atlética a crescer e vive a experiência por completo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="planos-col">
+      <div class="plano-box plano-mensal">
+        <span class="plano-nome">Plano Mensal</span>
+        <div class="plano-valor">R$ 30<span>/mês</span></div>
+        <p>Flexível, cancele quando quiser. Ideal pra quem quer experimentar.</p>
+      </div>
+
+      <div class="plano-box plano-semestral">
+        <span class="plano-ribbon">Melhor</span>
+        <span class="plano-nome">Plano Semestral</span>
+        <div class="plano-valor">R$ 80<span>/semestre</span></div>
+        <p>Economize! Menos de R$ 14/mês e aproveite todos os benefícios o semestre todo.</p>
+      </div>
+
+      <a href="https://wa.me/5534996980050?text=Ol%C3%A1!%20Quero%20ser%20S%C3%B3cio%20Tamandu%C3%A1%20da%20Monet%C3%A1ria%2C%20pode%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener" class="btn btn-whatsapp">Quero ser sócio</a>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+<section class="section" id="eventos">
+  <div class="section-header">
+    <span class="section-tag">Agenda</span>
+    <h2>Eventos</h2>
+    <p>O que tá rolando e o que vem por aí na Monetária.</p>
+  </div>
+
+  <div class="eventos-list">
+    <div class="evento-card evento-baile">
+      <div class="evento-img-wrap">
+        <img src="imagens/baile.png" alt="Baile da Monetária Open - 12 de Setembro" class="evento-img">
+      </div>
+      <div class="evento-info">
+        <span class="evento-pill">A maior festa das atléticas</span>
+        <h3>Baile da <span class="txt-blue">Monetária</span> Open</h3>
+        <p>A melhor festa de Uberlândia. Som pesado, pista lotada e a energia azul e vermelha que só a Monetária tem. Chame a galera e garanta seu lugar.</p>
+        <div class="evento-boxes">
+          <div class="evento-box">
+            <span>Ingresso</span>
+            <strong>R$60</strong>
+          </div>
+          <div class="evento-box">
+            <span>Data</span>
+            <strong>12 de setembro</strong>
+          </div>
+          <div class="evento-box">
+            <span>Local</span>
+            <strong>A sair em breve</strong>
+          </div>
+        </div>
+        <a href="https://wa.me/5534996980050?text=Ol%C3%A1!%20Quero%20garantir%20meu%20ingresso%20do%201%C2%BA%20lote%20do%20Baile%20da%20Monet%C3%A1ria!" target="_blank" rel="noopener" class="btn btn-primary">Garantir presença</a>
+      </div>
+    </div>
+
+    <div class="evento-card evento-processo">
+      <div class="ps-slot">
+        <img src="imagens/PS.png" alt="Processo Seletivo da Gestão da Monetária" class="ps-img" id="psImg" hidden>
+        <div class="ps-placeholder" id="psPlaceholder">
+          <span class="ps-placeholder-icon">🖼️</span>
+          <strong>Espaço para a arte do PS</strong>
+          <small>Salve a imagem <b>quadrada</b> como<br><code>imagens/PS.png</code></small>
+        </div>
+      </div>
+      <div class="evento-info">
+        <span class="evento-data">SETEMBRO</span>
+        <h3>Processo Seletivo de Gestão</h3>
+        <p>Aqui na Monetária a gente é uma família, e toda família cresce. Nosso Processo Seletivo abre em <strong>setembro</strong> pra quem quer sair de dentro das arquibancadas e ajudar a construir a atlética por dentro.</p>
+        <p>Não importa o curso, o período ou a experiência: se você tem vontade de ajudar, tem espaço pra você aqui. Se ficou muito interessado, chama a gente.</p>
+        <a href="https://wa.me/5534996980050?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Processo%20Seletivo%20de%20Gest%C3%A3o%20da%20Monet%C3%A1ria!" target="_blank" rel="noopener" class="btn btn-outline-dark">Quero fazer parte da gestão</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GESTAO -->
+<section class="section section-dark" id="gestao">
+  <div class="section-header">
+    <span class="section-tag">Por dentro</span>
+    <h2>Gestão</h2>
+    <p>A Monetária é tocada por quem ama a atlética. Clique em uma diretoria para conhecer o time por trás dela. Fique de olho: o próximo Processo Seletivo é em <strong>setembro</strong>.</p>
+  </div>
+  <div class="diretorias-grid" id="diretoriasGrid"></div>
+</section>
+
+<!-- MODAL GESTAO -->
+<div class="modal-overlay" id="gestaoOverlay">
+  <div class="modal-box">
+    <button class="modal-close" data-close aria-label="Fechar">&times;</button>
+    <img src="imagens/logo-circular.png" alt="Foto da diretoria" class="modal-photo" id="gestaoFoto">
+    <p class="modal-photo-note" id="gestaoFotoNote"></p>
+    <div class="modal-icon" id="gestaoIcon"></div>
+    <h3 id="gestaoTitle"></h3>
+    <div class="modal-block">
+      <h4>O que essa diretoria faz</h4>
+      <p id="gestaoDesc"></p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <img src="imagens/logo-circular.png" alt="Logo AAA Monetária" class="footer-logo">
+  <p>AAA Monetária — Associação Atlética Acadêmica &middot; UFU</p>
+  <p class="footer-cursos">Gestão da Informação &middot; Relações Internacionais &middot; Administração &middot; Economia &middot; Ciências Contábeis</p>
+
+  <div class="social-links footer-social">
+    <a href="https://wa.me/5534996980050" target="_blank" rel="noopener" class="social-icon" aria-label="WhatsApp" title="WhatsApp">
+      <img src="imagens/redes%20sociais/whatsapp-icon.png" alt="WhatsApp">
+    </a>
+    <a href="https://www.instagram.com/atleticamonetaria/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram" title="@atleticamonetaria">
+      <img src="imagens/redes%20sociais/instagram-icon.png" alt="Instagram">
+    </a>
+    <a href="https://www.tiktok.com/@atletica.monetaria" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok" title="@atletica.monetaria">
+      <img src="imagens/redes%20sociais/tiktok-icon.png" alt="TikTok">
+    </a>
+  </div>
+
+  <div class="footer-links">
+    <a href="contato.html">Contato</a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
