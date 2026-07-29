@@ -9,8 +9,8 @@ Gestão da Informação, Relações Internacionais, Administração, Economia e 
 - **Modalidades** — 13 modalidades (masculino e feminino). Ao clicar, abre um pop-up com o resumo,
   os dias de treino separados por gênero e um botão para falar no WhatsApp.
 - **Sócios** — benefícios do *Sócio Tamanduá* e os planos (R$ 30/mês e R$ 80/semestre).
-- **Eventos** — Baile da Monetária Open (12 de setembro, 1º lote R$ 60) e o Processo Seletivo da gestão.
-- **Gestão** — as 9 diretorias, cada uma com pop-up.
+- **Eventos** — Baile da Monetária Open (12 de setembro, 1º lote R$ 60).
+- **Gestão** — as 9 diretorias, cada uma com pop-up e foto do time.
 - **Contato** — página separada com formulário que encaminha a mensagem pelo WhatsApp.
 
 Tem alternância entre tema claro e escuro (o botão 🌙/☀️ no menu), e o layout é responsivo.
@@ -41,10 +41,9 @@ E acessar `http://localhost:8000`.
 
 - **Dias de treino**: só a Peteca está com os horários reais. As demais modalidades
   estão como "A confirmar" em `js/script.js`.
-- **Fotos das diretorias**: os pop-ups da aba Gestão usam a logo como imagem provisória.
-  Para trocar, adicione o campo `foto` no array `diretorias` em `js/script.js`.
-- **Arte do Processo Seletivo**: salve a imagem quadrada em `imagens/PS.png` que ela
-  aparece automaticamente no card.
+- **Foto da diretoria de Eventos**: é a única sem foto — o pop-up dela usa a logo como
+  imagem provisória. Basta salvar em `imagens/diretorias/` e apontar o campo `foto`
+  no array `diretorias` em `js/script.js`.
 
 ## Contato
 
