@@ -44,7 +44,11 @@ const modalidades = [
     resumo: "O handebol é para quem gosta de jogo intenso, resenha no G8 depois do jogo e uma equipe que joga junto dentro e fora da quadra. Se você quer fazer parte disso, seu lugar é aqui.",
     conquistas: [["🥈", "Atual Vice-Campeão Masculino — Olimpíada UFU"], ["🥉", "Atual Terceiro Lugar Feminino — CIA e Olimpíadas UFU"]],
     equipe: [["Treinador", "Schubert"], ["Coordenador", "Luiz"]],
-    horarios: ["Domingo • 10h às 12h"] },
+    horarios: ["Masculino • Domingo 11h", "Feminino • Domingo 10h"] },
+
+  { nome: "Basquete", icon: "🏀",
+    resumo: "O basquete da Monetária junta quem já joga e quem quer começar agora. Treinos animados, muita resenha e uma equipe que se apoia dentro e fora da quadra.",
+    horarios: ["Masculino • Sábado 13h", "Feminino • Sábado 15h"] },
 
   { nome: "Atletismo", icon: "🏃",
     resumo: "No atletismo não importa se você já compete ou quer começar agora. Seja na pista ou na rua, aqui você tem uma equipe pronta para treinar e evoluir.",
@@ -52,15 +56,25 @@ const modalidades = [
     equipe: [["Treinador", "Du"], ["Coordenador", "Naoki"]],
     horarios: ["Quarta • 20h", "Sábado • 10h"] },
 
-  { nome: "Natação", icon: "🏊", resumo: "Provas de piscina em diferentes estilos e distâncias. Ideal para quem busca resistência, técnica e condicionamento físico completo." },
-  { nome: "Jiu-Jitsu", icon: "🥋", resumo: "Luta de solo com foco em técnica e estratégia. Um dos esportes que mais cresce nas atléticas universitárias do Brasil." },
+  { nome: "Natação", icon: "🏊",
+    resumo: "Nunca nadou? Não importa. Aqui você aprende no seu ritmo, evolui a cada treino e faz parte de uma família dentro e fora da piscina.",
+    conquistas: [["🥉", "Atual Terceiro Lugar Feminino — Olimpíadas UFU"]],
+    equipe: [["Treinadora", "Tiene"], ["Coordenador", "Luiz"]],
+    horarios: ["Terça • 21h", "Sábado • 10h"] },
+
+  { nome: "Jiu-Jitsu", icon: "🥋",
+    resumo: "O respeito vem antes da força. Aqui você encontra uma equipe que acolhe, ensina e incentiva cada integrante a evoluir no seu próprio ritmo.",
+    conquistas: [["🥉", "Atual Terceiro Lugar Feminino — CIA"]],
+    equipe: [["Coordenadora", "Mafê"]] },
 
   { nome: "Xadrez", icon: "♟️",
     resumo: "Se você já joga xadrez e tem vontade de representar a Monetária nas competições universitárias, entre em contato com a gente. Estamos em busca de novos enxadristas para fortalecer nosso time." },
 
   { nome: "Tênis de Mesa", icon: "🏓",
-    resumo: "Ping pong competitivo, de reflexo rápido e muita estratégia de jogo. Treinos leves e super concorridos.",
-    horarios: ["Quarta • 20h"] },
+    resumo: "Se você tem reflexos rápidos, ou simplesmente vontade de aprender, o tênis de mesa da Monetária é o lugar certo. Venha treinar, evoluir e fazer parte da nossa família.",
+    conquistas: [["🥈", "Atual Vice-Campeão Feminino — Olimpíadas UFU"]],
+    equipe: [["Coordenador", "Lucas"]],
+    horarios: ["Quarta • 19h"] },
 
   { nome: "Tênis de Campo", icon: "🎾",
     resumo: "Não importa se você nunca pegou em uma raquete ou já joga há anos. O importante é ter vontade de aprender, evoluir e fazer parte da nossa família.",
@@ -70,17 +84,18 @@ const modalidades = [
   { nome: "Futsal", icon: "🥅",
     resumo: "No futsal, teu escudo é minha honra e o meu amor. Nós jogamos por quem está ao nosso lado e por todos que cantam na arquibancada.",
     equipe: [["Coordenador", "Gordo"]],
-    horarios: ["Quarta • 21h", "Sábado • 11h (Masculino)"] },
+    horarios: ["Masculino • Quarta 21h", "Masculino • Sábado 11h"] },
 
   { nome: "Futebol de Campo", icon: "⚽",
     resumo: "Sozinho ninguém vence um jogo. Aqui cada passe começa com a confiança no companheiro e termina com uma equipe comemorando junta.",
-    equipe: [["Coordenador", "Gordo"]] },
+    equipe: [["Coordenador", "Gordo"]],
+    horarios: ["Feminino • Domingo 10h", "Feminino • Sábado 14h"] },
 
   { nome: "Vôlei", icon: "🏐",
     resumo: "O vôlei é mais do que treinos e jogos. É um time que cresce junto, se apoia dentro de quadra e transforma cada treino em uma oportunidade de evoluir e fazer novas amizades.",
     conquistas: [["🥈", "Atual Vice-Campeão Masculino — Olimpíadas UFU"]],
     equipe: [["Treinador", "Sérgio"], ["Coordenador", "Lorenzo"]],
-    horarios: ["Quinta • 22h", "Domingo • 10h"] },
+    horarios: ["Masculino • Quinta 21h", "Masculino • Sábado 12h", "Feminino • Sábado 10h", "Feminino • Sábado 12h"] },
 
   { nome: "FIFA", icon: "🎮",
     resumo: "Se você manda bem no FIFA e tem vontade de representar a Monetária nas competições universitárias, entre em contato com a gente. Estamos em busca de novos craques.",
@@ -158,6 +173,8 @@ function openModalidade(m){
     m.horarios.forEach(h => {
       const chip = document.createElement("span");
       chip.className = "horario-chip";
+      if(/^Masculino/.test(h)) chip.classList.add("horario-m");
+      else if(/^Feminino/.test(h)) chip.classList.add("horario-f");
       chip.textContent = h;
       hor.appendChild(chip);
     });
@@ -235,6 +252,13 @@ document.querySelectorAll(".modal-overlay").forEach(overlay => {
 document.querySelectorAll("[data-close]").forEach(btn => btn.addEventListener("click", closeOverlays));
 document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeOverlays(); });
 
+/* ---------------- COMISSÁRIOS (baile) ---------------- */
+const btnComissarios = document.getElementById("btnComissarios");
+const comissariosOverlay = document.getElementById("comissariosOverlay");
+if(btnComissarios && comissariosOverlay){
+  btnComissarios.addEventListener("click", () => openOverlay(comissariosOverlay));
+}
+
 /* ---------------- NAV MOBILE ---------------- */
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
@@ -243,20 +267,41 @@ if(navToggle && navLinks){
   navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
 }
 
-/* ---------------- FORMULÁRIO DE CONTATO ---------------- */
+/* ---------------- FORMULÁRIO DE CONTATO (Formspree) ---------------- */
 const contatoForm = document.getElementById("contatoForm");
 if(contatoForm){
   const formNote = document.getElementById("formNote");
-  contatoForm.addEventListener("submit", (e) => {
+  const submitBtn = contatoForm.querySelector('button[type="submit"]');
+
+  contatoForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const nome = document.getElementById("nome").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const mensagem = document.getElementById("mensagem").value.trim();
-    const texto = encodeURIComponent(
-      `Contato via site - Monetária\n\nNome: ${nome}\nE-mail: ${email}\n\nMensagem:\n${mensagem}`
-    );
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${texto}`, "_blank");
-    if(formNote) formNote.textContent = "Abrindo o WhatsApp com sua mensagem preenchida...";
-    contatoForm.reset();
+
+    formNote.className = "form-note";
+    formNote.textContent = "Enviando...";
+    if(submitBtn) submitBtn.disabled = true;
+
+    try {
+      const resposta = await fetch(contatoForm.action, {
+        method: "POST",
+        body: new FormData(contatoForm),
+        headers: { "Accept": "application/json" }
+      });
+
+      if(resposta.ok){
+        contatoForm.reset();
+        formNote.classList.add("form-ok");
+        formNote.textContent = "✅ Mensagem enviada! Logo a gente responde.";
+      } else {
+        const dados = await resposta.json().catch(() => ({}));
+        const msg = dados.errors ? dados.errors.map(x => x.message).join(" ") : "";
+        formNote.classList.add("form-erro");
+        formNote.textContent = "❌ Não deu pra enviar" + (msg ? ": " + msg : ". Tente de novo ou chame no WhatsApp.");
+      }
+    } catch(err){
+      formNote.classList.add("form-erro");
+      formNote.textContent = "❌ Sem conexão. Tente de novo ou chame a gente no WhatsApp.";
+    } finally {
+      if(submitBtn) submitBtn.disabled = false;
+    }
   });
 }

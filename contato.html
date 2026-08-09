@@ -50,7 +50,7 @@
 <!-- CONTATO -->
 <section class="section" id="contato">
   <div class="contato-wrapper">
-    <form class="contato-form" id="contatoForm">
+    <form class="contato-form" id="contatoForm" action="https://formspree.io/f/xppapdgq" method="POST">
       <label for="nome">Nome</label>
       <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
 
@@ -60,6 +60,7 @@
       <label for="mensagem">Mensagem</label>
       <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
 
+      <input type="hidden" name="_subject" value="Novo contato pelo site da Monetária">
       <button type="submit" class="btn btn-primary">Enviar mensagem</button>
       <p class="form-note" id="formNote"></p>
     </form>
@@ -113,5 +114,9 @@
 </footer>
 
 <script src="js/script.js"></script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5ba59026dac9465b9e5ebf1932fff203"}'></script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>

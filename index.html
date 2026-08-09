@@ -125,39 +125,32 @@
   <div class="socios-layout">
     <div class="beneficios-list">
       <div class="beneficio-row">
-        <span class="beneficio-emoji">🎟️</span>
-        <div>
-          <h4>Entradas no Arq Balada</h4>
-          <p>Acesso garantido e condições especiais nas festas.</p>
-        </div>
+        <span class="beneficio-emoji">🏋️</span>
+        <div><h4>Treinos grátis</h4></div>
       </div>
       <div class="beneficio-row">
-        <span class="beneficio-emoji">💸</span>
-        <div>
-          <h4>Descontos e promoções</h4>
-          <p>Preços exclusivos em produtos, eventos e parceiros da atlética.</p>
-        </div>
+        <span class="beneficio-emoji">🏷️</span>
+        <div><h4>Desconto em produtos</h4></div>
       </div>
       <div class="beneficio-row">
-        <span class="beneficio-emoji">👕</span>
-        <div>
-          <h4>Vantagens em produtos</h4>
-          <p>Prioridade e desconto em camisas, moletons e uniformes.</p>
-        </div>
+        <span class="beneficio-emoji">🏪</span>
+        <div><h4>Descontos em estabelecimentos</h4></div>
       </div>
       <div class="beneficio-row">
-        <span class="beneficio-emoji">🚌</span>
-        <div>
-          <h4>Viagens e competições</h4>
-          <p>Condições especiais para acompanhar a Monetária em campeonatos.</p>
-        </div>
+        <span class="beneficio-emoji">🎉</span>
+        <div><h4>Vantagens em eventos</h4></div>
       </div>
       <div class="beneficio-row">
-        <span class="beneficio-emoji">❤️</span>
-        <div>
-          <h4>Fazer parte da família</h4>
-          <p>Você ajuda a atlética a crescer e vive a experiência por completo.</p>
-        </div>
+        <span class="beneficio-emoji">🎽</span>
+        <div><h4>Investimento em material esportivo</h4></div>
+      </div>
+      <div class="beneficio-row">
+        <span class="beneficio-emoji">🔒</span>
+        <div><h4>Acesso a grupo e produtos exclusivos</h4></div>
+      </div>
+      <div class="beneficio-row">
+        <span class="beneficio-emoji">🎁</span>
+        <div><h4>Sorteios exclusivos</h4></div>
       </div>
     </div>
 
@@ -200,7 +193,7 @@
         <div class="evento-boxes">
           <div class="evento-box">
             <span>Ingresso</span>
-            <strong>R$60</strong>
+            <strong>R$70</strong>
           </div>
           <div class="evento-box">
             <span>Data</span>
@@ -208,14 +201,32 @@
           </div>
           <div class="evento-box">
             <span>Local</span>
-            <strong>A sair em breve</strong>
+            <strong>Bullteco</strong>
           </div>
         </div>
-        <a href="https://wa.me/5534996980050?text=Ol%C3%A1!%20Quero%20garantir%20meu%20ingresso%20do%201%C2%BA%20lote%20do%20Baile%20da%20Monet%C3%A1ria!" target="_blank" rel="noopener" class="btn btn-primary">Garantir presença</a>
+        <button type="button" class="btn btn-primary" id="btnComissarios">Garantir presença</button>
       </div>
     </div>
   </div>
 </section>
+
+<!-- MODAL COMISSÁRIOS -->
+<div class="modal-overlay" id="comissariosOverlay">
+  <div class="modal-box comissarios-box">
+    <button class="modal-close" data-close aria-label="Fechar">&times;</button>
+    <div class="modal-icon">🎟️</div>
+    <h3>Comissários</h3>
+    <p class="comissarios-sub">Escolha com qual comissário você quer garantir seu ingresso do Baile da Monetária:</p>
+    <div class="comissarios-list">
+      <a href="https://wa.me/5534996980050?text=Ol%C3%A1!%20Quero%20garantir%20meu%20ingresso%20do%20Baile%20da%20Monet%C3%A1ria!" target="_blank" rel="noopener" class="btn btn-whatsapp comissario-item">
+        <img src="imagens/redes%20sociais/whatsapp.png" alt="" class="comissario-icon"> Comissário 1
+      </a>
+      <a href="https://wa.me/5534996980050?text=Ol%C3%A1!%20Quero%20garantir%20meu%20ingresso%20do%20Baile%20da%20Monet%C3%A1ria!" target="_blank" rel="noopener" class="btn btn-whatsapp comissario-item">
+        <img src="imagens/redes%20sociais/whatsapp.png" alt="" class="comissario-icon"> Comissário 2
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- GESTAO -->
 <section class="section section-dark" id="gestao">
@@ -260,5 +271,9 @@
 </footer>
 
 <script src="js/script.js"></script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5ba59026dac9465b9e5ebf1932fff203"}'></script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>
