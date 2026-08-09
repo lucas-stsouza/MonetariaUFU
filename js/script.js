@@ -35,7 +35,7 @@ const modalidades = [
 
   { nome: "Judô", icon: "🥋",
     resumo: "No judô, ninguém precisa chegar sabendo. Aqui a gente aprende junto, evolui junto e cria laços que vão muito além do tatame. A disciplina transforma esforço em evolução.",
-    conquistas: [["🥇", "Atual Campeão Feminino — Olimpíada UFU"], ["🥈", "Atual Vice-Campeão — Olimpíada UFU"]],
+    conquistas: [["🥇", "Atual Campeão Feminino — Olimpíada UFU"], ["🥈", "Atual Vice-Campeão Masculino — Olimpíada UFU"]],
     equipe: [["Sensei", "Pablo"], ["Coordenadora", "Mafê"]],
     horarios: ["Quinta • 21h", "Sábado • 16h"],
     obs: "Treinos alternados semanalmente." },
@@ -47,12 +47,14 @@ const modalidades = [
     horarios: ["Masculino • Domingo 11h", "Feminino • Domingo 10h"] },
 
   { nome: "Basquete", icon: "🏀",
-    resumo: "O basquete da Monetária junta quem já joga e quem quer começar agora. Treinos animados, muita resenha e uma equipe que se apoia dentro e fora da quadra.",
+    resumo: "No basquete você encontra uma equipe que joga unida, evolui a cada treino e faz qualquer novo integrante se sentir parte do time desde o primeiro dia.",
+    conquistas: [["🥉", "Atual Terceiro Lugar Feminino — CIA"]],
+    equipe: [["Treinador", "Bruno"], ["Coordenador", "Lorenzo"]],
     horarios: ["Masculino • Sábado 13h", "Feminino • Sábado 15h"] },
 
   { nome: "Atletismo", icon: "🏃",
     resumo: "No atletismo não importa se você já compete ou quer começar agora. Seja na pista ou na rua, aqui você tem uma equipe pronta para treinar e evoluir.",
-    conquistas: [["🥇", "Atual Campeão Masculino — Olimpíadas UFU"], ["🥉", "Atual Terceiro — Olimpíadas UFU"]],
+    conquistas: [["🥇", "Atual Campeão Masculino — Olimpíadas UFU"], ["🥉", "Atual Terceiro Feminino — Olimpíadas UFU"]],
     equipe: [["Treinador", "Du"], ["Coordenador", "Naoki"]],
     horarios: ["Quarta • 20h", "Sábado • 10h"] },
 
@@ -65,10 +67,11 @@ const modalidades = [
   { nome: "Jiu-Jitsu", icon: "🥋",
     resumo: "O respeito vem antes da força. Aqui você encontra uma equipe que acolhe, ensina e incentiva cada integrante a evoluir no seu próprio ritmo.",
     conquistas: [["🥉", "Atual Terceiro Lugar Feminino — CIA"]],
-    equipe: [["Coordenadora", "Mafê"]] },
+    equipe: [["Sensei", "João Marchini"], ["Coordenadora", "Mafê"]] },
 
   { nome: "Xadrez", icon: "♟️",
-    resumo: "Se você já joga xadrez e tem vontade de representar a Monetária nas competições universitárias, entre em contato com a gente. Estamos em busca de novos enxadristas para fortalecer nosso time." },
+    resumo: "Se você já joga xadrez e tem vontade de representar a Monetária nas competições universitárias, entre em contato com a gente. Estamos em busca de novos enxadristas para fortalecer nosso time.",
+    equipe: [["Coordenador", "Lucas"]] },
 
   { nome: "Tênis de Mesa", icon: "🏓",
     resumo: "Se você tem reflexos rápidos, ou simplesmente vontade de aprender, o tênis de mesa da Monetária é o lugar certo. Venha treinar, evoluir e fazer parte da nossa família.",
@@ -83,7 +86,7 @@ const modalidades = [
 
   { nome: "Futsal", icon: "🥅",
     resumo: "No futsal, teu escudo é minha honra e o meu amor. Nós jogamos por quem está ao nosso lado e por todos que cantam na arquibancada.",
-    equipe: [["Coordenador", "Gordo"]],
+    equipe: [["Técnico", "Raphael"], ["Coordenador", "Gordo"]],
     horarios: ["Masculino • Quarta 21h", "Masculino • Sábado 11h"] },
 
   { nome: "Futebol de Campo", icon: "⚽",
