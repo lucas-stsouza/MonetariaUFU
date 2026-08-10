@@ -91,8 +91,8 @@ const modalidades = [
 
   { nome: "Futebol de Campo", icon: "⚽",
     resumo: "Sozinho ninguém vence um jogo. Aqui cada passe começa com a confiança no companheiro e termina com uma equipe comemorando junta.",
-    equipe: [["Coordenador", "Gordo"]],
-    horarios: ["Feminino • Domingo 10h", "Feminino • Sábado 14h"] },
+    generos: ["m"],
+    equipe: [["Coordenador", "Gordo"]] },
 
   { nome: "Vôlei", icon: "🏐",
     resumo: "O vôlei é mais do que treinos e jogos. É um time que cresce junto, se apoia dentro de quadra e transforma cada treino em uma oportunidade de evoluir e fazer novas amizades.",
@@ -111,14 +111,16 @@ if(grid){
   modalidades.forEach(m => {
     const card = document.createElement("div");
     card.className = "modalidade-card";
+    const gens = m.generos || ["m", "f"];
+    const partes = [];
+    if(gens.includes("m")) partes.push('<span class="g-m">&#9794; Masculino</span>');
+    if(gens.includes("f")) partes.push('<span class="g-f">&#9792; Feminino</span>');
+    const generoHTML = partes.join('<span class="g-sep">&bull;</span>');
+
     card.innerHTML = `
       <div class="modalidade-icon">${m.icon}</div>
       <h3>${m.nome}</h3>
-      <div class="modalidade-genero">
-        <span class="g-m">&#9794; Masculino</span>
-        <span class="g-sep">&bull;</span>
-        <span class="g-f">&#9792; Feminino</span>
-      </div>
+      <div class="modalidade-genero">${generoHTML}</div>
       <span class="ver-treinos">Ver treinos &rarr;</span>`;
     card.addEventListener("click", () => openModalidade(m));
     grid.appendChild(card);
@@ -254,13 +256,6 @@ document.querySelectorAll(".modal-overlay").forEach(overlay => {
 });
 document.querySelectorAll("[data-close]").forEach(btn => btn.addEventListener("click", closeOverlays));
 document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeOverlays(); });
-
-/* ---------------- COMISSÁRIOS (baile) ---------------- */
-const btnComissarios = document.getElementById("btnComissarios");
-const comissariosOverlay = document.getElementById("comissariosOverlay");
-if(btnComissarios && comissariosOverlay){
-  btnComissarios.addEventListener("click", () => openOverlay(comissariosOverlay));
-}
 
 /* ---------------- NAV MOBILE ---------------- */
 const navToggle = document.getElementById("navToggle");
