@@ -67,7 +67,9 @@ const modalidades = [
   { nome: "Jiu-Jitsu", icon: "🥋",
     resumo: "O respeito vem antes da força. Aqui você encontra uma equipe que acolhe, ensina e incentiva cada integrante a evoluir no seu próprio ritmo.",
     conquistas: [["🥉", "Atual Terceiro Lugar Feminino — CIA"]],
-    equipe: [["Sensei", "João Marchini"], ["Coordenadora", "Mafê"]] },
+    equipe: [["Sensei", "João Marchini"], ["Coordenadora", "Mafê"]],
+    horarios: ["Quinta • 21h", "Sábado • 15h"],
+    obs: "Treinos alternados semanalmente." },
 
   { nome: "Xadrez", icon: "♟️",
     resumo: "Se você já joga xadrez e tem vontade de representar a Monetária nas competições universitárias, entre em contato com a gente. Estamos em busca de novos enxadristas para fortalecer nosso time.",
