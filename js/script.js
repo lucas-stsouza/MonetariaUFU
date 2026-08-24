@@ -87,7 +87,7 @@ const modalidades = [
   { nome: "Futsal", icon: "🥅",
     resumo: "No futsal, teu escudo é minha honra e o meu amor. Nós jogamos por quem está ao nosso lado e por todos que cantam na arquibancada.",
     equipe: [["Técnico", "Raphael"], ["Coordenador", "Gordo"]],
-    horarios: ["Masculino • Quarta 21h", "Masculino • Sábado 11h"] },
+    horarios: ["Masculino • Quarta 21h", "Masculino • Sábado 11h", "Feminino • Sábado 14h", "Feminino • Domingo 10h"] },
 
   { nome: "Futebol de Campo", icon: "⚽",
     resumo: "Sozinho ninguém vence um jogo. Aqui cada passe começa com a confiança no companheiro e termina com uma equipe comemorando junta.",
