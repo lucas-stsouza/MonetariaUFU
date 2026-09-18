@@ -235,7 +235,7 @@ const gestaoOverlay = document.getElementById("gestaoOverlay");
 function openGestao(d){
   const foto = document.getElementById("gestaoFoto");
   // Placeholder: enquanto não houver foto real, mostra a logo.
-  foto.src = d.foto || "imagens/logo.png";
+  foto.src = d.foto || "imagens/logo-web.png";
   foto.classList.toggle("is-placeholder", !d.foto);
   document.getElementById("gestaoFotoNote").textContent = d.foto
     ? "" : "📷 Foto ilustrativa — em breve a foto real da diretoria aqui.";
@@ -306,35 +306,46 @@ document.querySelectorAll("form.contato-form").forEach(form => {
 (function initCountdown(){
   const box = document.getElementById("psCountdown");
   if(!box) return;
-  const alvo = new Date(box.dataset.deadline).getTime(); // ex: 2026-09-25T12:00:00-03:00
-  const campos = {
-    dias: box.querySelector("[data-d]"),
-    horas: box.querySelector("[data-h]"),
-    min: box.querySelector("[data-m]"),
-    seg: box.querySelector("[data-s]")
-  };
+
+  // Prazo: 25/09/2026 12:00 de Brasília (UTC-3) = 15:00 UTC.
+  // Date.UTC funciona em qualquer navegador; o data-deadline só é usado se for válido.
+  let alvo = new Date(box.getAttribute("data-deadline")).getTime();
+  if(isNaN(alvo)) alvo = Date.UTC(2026, 8, 25, 15, 0, 0);
+
+  const campos = [
+    box.querySelector("[data-d]"),
+    box.querySelector("[data-h]"),
+    box.querySelector("[data-m]"),
+    box.querySelector("[data-s]")
+  ];
   const aviso = document.getElementById("psPrazo");
+  const dois = n => (n < 10 ? "0" : "") + n;
+  let timer = null;
+
+  function mostrar(valores){
+    for(let i = 0; i < campos.length; i++){
+      if(campos[i]) campos[i].textContent = valores[i];
+    }
+  }
 
   function tick(){
-    const agora = Date.now();
-    let diff = Math.floor((alvo - agora) / 1000);
+    let diff = Math.floor((alvo - Date.now()) / 1000);
     if(diff <= 0){
       box.classList.add("encerrado");
-      Object.values(campos).forEach(c => { if(c) c.textContent = "00"; });
+      mostrar(["00", "00", "00", "00"]);
       if(aviso) aviso.textContent = "Inscrições encerradas.";
-      clearInterval(timer);
-      return;
+      if(timer) clearInterval(timer);
+      return false;
     }
-    const d = Math.floor(diff / 86400); diff -= d*86400;
-    const h = Math.floor(diff / 3600); diff -= h*3600;
+    const d = Math.floor(diff / 86400); diff -= d * 86400;
+    const h = Math.floor(diff / 3600);  diff -= h * 3600;
     const m = Math.floor(diff / 60);
-    const s = diff - m*60;
-    const p = n => String(n).padStart(2, "0");
-    if(campos.dias) campos.dias.textContent = p(d);
-    if(campos.horas) campos.horas.textContent = p(h);
-    if(campos.min) campos.min.textContent = p(m);
-    if(campos.seg) campos.seg.textContent = p(s);
+    const s = diff - m * 60;
+    mostrar([dois(d), dois(h), dois(m), dois(s)]);
+    return true;
   }
-  tick();
-  const timer = setInterval(tick, 1000);
+
+  const continua = tick();
+  box.hidden = false; // só aparece depois de ter os números certos
+  if(continua) timer = setInterval(tick, 1000);
 })();
