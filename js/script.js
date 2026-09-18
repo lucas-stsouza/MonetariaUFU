@@ -267,41 +267,74 @@ if(navToggle && navLinks){
   navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
 }
 
-/* ---------------- FORMULÁRIO DE CONTATO (Formspree) ---------------- */
-const contatoForm = document.getElementById("contatoForm");
-if(contatoForm){
-  const formNote = document.getElementById("formNote");
-  const submitBtn = contatoForm.querySelector('button[type="submit"]');
+/* ---------------- FORMULÁRIOS (Formspree) ---------------- */
+/* Vale para o formulário de contato e o de inscrição do processo seletivo. */
+document.querySelectorAll("form.contato-form").forEach(form => {
+  const formNote = form.querySelector(".form-note");
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const okMsg = form.dataset.okMsg || "✅ Mensagem enviada! Logo a gente responde.";
 
-  contatoForm.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    formNote.className = "form-note";
-    formNote.textContent = "Enviando...";
+    if(formNote){ formNote.className = "form-note"; formNote.textContent = "Enviando..."; }
     if(submitBtn) submitBtn.disabled = true;
 
     try {
-      const resposta = await fetch(contatoForm.action, {
+      const resposta = await fetch(form.action, {
         method: "POST",
-        body: new FormData(contatoForm),
+        body: new FormData(form),
         headers: { "Accept": "application/json" }
       });
 
       if(resposta.ok){
-        contatoForm.reset();
-        formNote.classList.add("form-ok");
-        formNote.textContent = "✅ Mensagem enviada! Logo a gente responde.";
+        form.reset();
+        if(formNote){ formNote.classList.add("form-ok"); formNote.textContent = okMsg; }
       } else {
         const dados = await resposta.json().catch(() => ({}));
         const msg = dados.errors ? dados.errors.map(x => x.message).join(" ") : "";
-        formNote.classList.add("form-erro");
-        formNote.textContent = "❌ Não deu pra enviar" + (msg ? ": " + msg : ". Tente de novo ou chame no WhatsApp.");
+        if(formNote){ formNote.classList.add("form-erro"); formNote.textContent = "❌ Não deu pra enviar" + (msg ? ": " + msg : ". Tente de novo ou chame no WhatsApp."); }
       }
     } catch(err){
-      formNote.classList.add("form-erro");
-      formNote.textContent = "❌ Sem conexão. Tente de novo ou chame a gente no WhatsApp.";
+      if(formNote){ formNote.classList.add("form-erro"); formNote.textContent = "❌ Sem conexão. Tente de novo ou chame a gente no WhatsApp."; }
     } finally {
       if(submitBtn) submitBtn.disabled = false;
     }
   });
-}
+});
+
+/* ---------------- CONTAGEM REGRESSIVA (processo seletivo) ---------------- */
+(function initCountdown(){
+  const box = document.getElementById("psCountdown");
+  if(!box) return;
+  const alvo = new Date(box.dataset.deadline).getTime(); // ex: 2026-09-25T12:00:00-03:00
+  const campos = {
+    dias: box.querySelector("[data-d]"),
+    horas: box.querySelector("[data-h]"),
+    min: box.querySelector("[data-m]"),
+    seg: box.querySelector("[data-s]")
+  };
+  const aviso = document.getElementById("psPrazo");
+
+  function tick(){
+    const agora = Date.now();
+    let diff = Math.floor((alvo - agora) / 1000);
+    if(diff <= 0){
+      box.classList.add("encerrado");
+      Object.values(campos).forEach(c => { if(c) c.textContent = "00"; });
+      if(aviso) aviso.textContent = "Inscrições encerradas.";
+      clearInterval(timer);
+      return;
+    }
+    const d = Math.floor(diff / 86400); diff -= d*86400;
+    const h = Math.floor(diff / 3600); diff -= h*3600;
+    const m = Math.floor(diff / 60);
+    const s = diff - m*60;
+    const p = n => String(n).padStart(2, "0");
+    if(campos.dias) campos.dias.textContent = p(d);
+    if(campos.horas) campos.horas.textContent = p(h);
+    if(campos.min) campos.min.textContent = p(m);
+    if(campos.seg) campos.seg.textContent = p(s);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
