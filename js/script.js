@@ -302,50 +302,140 @@ document.querySelectorAll("form.contato-form").forEach(form => {
   });
 });
 
-/* ---------------- CONTAGEM REGRESSIVA (processo seletivo) ---------------- */
-(function initCountdown(){
-  const box = document.getElementById("psCountdown");
-  if(!box) return;
+/* ---------------- OLIMPÍADAS: títulos que a Monetária defende ----------------
+   Monta os cards a partir das conquistas cadastradas nas modalidades (acima)
+   que citam as Olimpíadas. Ouro primeiro, depois prata e bronze. */
+(function initTitulosOlimpiadas(){
+  const lista = document.getElementById("olTitulos");
+  if(!lista) return;
+  const peso = { "🥇": 1, "🥈": 2, "🥉": 3 };
+  const cards = [];
+  modalidades.forEach(m => {
+    const daOlimpiada = (m.conquistas || []).filter(c => /olimp/i.test(c[1]));
+    if(!daOlimpiada.length) return;
+    const melhor = Math.min.apply(null, daOlimpiada.map(c => peso[c[0]] || 9));
+    cards.push({ m, daOlimpiada, melhor });
+  });
+  cards.sort((a, b) => a.melhor - b.melhor);
 
-  // Prazo: 25/09/2026 12:00 de Brasília (UTC-3) = 15:00 UTC.
-  // Date.UTC funciona em qualquer navegador; o data-deadline só é usado se for válido.
-  let alvo = new Date(box.getAttribute("data-deadline")).getTime();
-  if(isNaN(alvo)) alvo = Date.UTC(2026, 8, 25, 15, 0, 0);
+  cards.forEach(({ m, daOlimpiada }) => {
+    const card = document.createElement("div");
+    card.className = "ol-titulo";
+    const topo = document.createElement("div");
+    topo.className = "ol-titulo-topo";
+    const icone = document.createElement("span");
+    icone.className = "ol-titulo-icone";
+    icone.textContent = m.icon;
+    const nome = document.createElement("h4");
+    nome.textContent = m.nome;
+    topo.append(icone, nome);
 
-  const campos = [
-    box.querySelector("[data-d]"),
-    box.querySelector("[data-h]"),
-    box.querySelector("[data-m]"),
-    box.querySelector("[data-s]")
-  ];
-  const aviso = document.getElementById("psPrazo");
+    const ul = document.createElement("ul");
+    daOlimpiada.forEach(([medalha, texto]) => {
+      const li = document.createElement("li");
+      const md = document.createElement("span");
+      md.className = "medalha";
+      md.textContent = medalha;
+      // "Atual Campeão Feminino — Olimpíada UFU" -> "Atual Campeão Feminino"
+      li.append(md, document.createTextNode(texto.replace(/\s*—.*$/, "")));
+      ul.appendChild(li);
+    });
+    card.append(topo, ul);
+    lista.appendChild(card);
+  });
+})();
+
+/* ---------------- CONTAGEM REGRESSIVA (qualquer evento) ----------------
+   A data fica só no HTML (sempre com o fuso de Brasília, -03:00):
+   - Contagem completa:
+       <div class="ps-countdown" data-countdown="2026-10-30T00:00:00-03:00"
+            data-aviso="idDoTextoDeBaixo" data-fim="Texto quando acabar" hidden>
+         ... [data-d] [data-h] [data-m] [data-s] ...
+       </div>
+   - Só os dias (ex.: card da página inicial):
+       <strong data-dias-ate="2026-10-30T00:00:00-03:00" data-fim="Começou!">em breve</strong>
+*/
+function prazoEmMs(texto){
+  let t = new Date(texto).getTime();
+  if(!isNaN(t)) return t;
+  // navegadores antigos: lê "AAAA-MM-DDTHH:MM(:SS)-03:00" na mão
+  const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?(?:([+-])(\d{2}):?(\d{2}))?/.exec(texto || "");
+  if(!m) return NaN;
+  t = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +(m[6] || 0));
+  if(m[7]){
+    const fuso = (+m[8] * 60 + +m[9]) * 60000;
+    t += (m[7] === "-" ? fuso : -fuso);
+  }
+  return t;
+}
+
+(function initCountdowns(){
   const dois = n => (n < 10 ? "0" : "") + n;
-  let timer = null;
 
-  function mostrar(valores){
-    for(let i = 0; i < campos.length; i++){
-      if(campos[i]) campos[i].textContent = valores[i];
-    }
+  // contagem completa (dias, horas, min, seg)
+  const caixas = document.querySelectorAll("[data-countdown]");
+  for(let k = 0; k < caixas.length; k++){
+    const box = caixas[k];
+    const alvo = prazoEmMs(box.getAttribute("data-countdown"));
+    if(isNaN(alvo)) continue; // data inválida: continua escondida
+    const campos = [
+      box.querySelector("[data-d]"),
+      box.querySelector("[data-h]"),
+      box.querySelector("[data-m]"),
+      box.querySelector("[data-s]")
+    ];
+    const aviso = document.getElementById(box.getAttribute("data-aviso") || "");
+    const fim = box.getAttribute("data-fim");
+    let timer = null;
+
+    const mostrar = valores => {
+      for(let i = 0; i < campos.length; i++){
+        if(campos[i]) campos[i].textContent = valores[i];
+      }
+    };
+
+    const tick = () => {
+      let diff = Math.floor((alvo - Date.now()) / 1000);
+      if(diff <= 0){
+        box.classList.add("encerrado");
+        mostrar(["00", "00", "00", "00"]);
+        if(aviso && fim) aviso.textContent = fim;
+        if(timer) clearInterval(timer);
+        return false;
+      }
+      const d = Math.floor(diff / 86400); diff -= d * 86400;
+      const h = Math.floor(diff / 3600);  diff -= h * 3600;
+      const m = Math.floor(diff / 60);
+      const s = diff - m * 60;
+      mostrar([dois(d), dois(h), dois(m), dois(s)]);
+      return true;
+    };
+
+    const continua = tick();
+    box.hidden = false; // só aparece depois de ter os números certos
+    if(continua) timer = setInterval(tick, 1000);
   }
 
-  function tick(){
-    let diff = Math.floor((alvo - Date.now()) / 1000);
-    if(diff <= 0){
-      box.classList.add("encerrado");
-      mostrar(["00", "00", "00", "00"]);
-      if(aviso) aviso.textContent = "Inscrições encerradas.";
-      if(timer) clearInterval(timer);
-      return false;
-    }
-    const d = Math.floor(diff / 86400); diff -= d * 86400;
-    const h = Math.floor(diff / 3600);  diff -= h * 3600;
-    const m = Math.floor(diff / 60);
-    const s = diff - m * 60;
-    mostrar([dois(d), dois(h), dois(m), dois(s)]);
-    return true;
+  // só os dias que faltam
+  const dias = document.querySelectorAll("[data-dias-ate]");
+  for(let k = 0; k < dias.length; k++){
+    const el = dias[k];
+    const alvo = prazoEmMs(el.getAttribute("data-dias-ate"));
+    if(isNaN(alvo)) continue;
+    const fim = el.getAttribute("data-fim") || "Já começou!";
+    let timer = null;
+    const atualiza = () => {
+      const ms = alvo - Date.now();
+      if(ms <= 0){
+        el.textContent = fim;
+        if(timer) clearInterval(timer);
+        return false;
+      }
+      // mesmo arredondamento da contagem completa (dias inteiros que faltam)
+      const n = Math.floor(ms / 86400000);
+      el.textContent = n === 0 ? "É amanhã!" : (n === 1 ? "1 dia" : n + " dias");
+      return true;
+    };
+    if(atualiza()) timer = setInterval(atualiza, 60000);
   }
-
-  const continua = tick();
-  box.hidden = false; // só aparece depois de ter os números certos
-  if(continua) timer = setInterval(tick, 1000);
 })();

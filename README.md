@@ -9,7 +9,13 @@ Gestão da Informação, Relações Internacionais, Administração, Economia e 
 - **Modalidades** — 13 modalidades (masculino e feminino). Ao clicar, abre um pop-up com o resumo,
   os dias de treino separados por gênero e um botão para falar no WhatsApp.
 - **Sócios** — benefícios do *Sócio Tamanduá* e os planos (R$ 30/mês e R$ 80/semestre).
-- **Eventos** — Baile da Monetária Open (12 de setembro, 1º lote R$ 60).
+- **Eventos** — card das Olimpíadas UFU 2026 (abertura em 30 de outubro), com link para a
+  página `olimpiadas.html`: contagem regressiva, títulos que a Monetária defende (montados
+  a partir das conquistas das modalidades em `js/script.js`) e chamada pra torcida.
+  O antigo `processo-seletivo.html` só redireciona para essa página.
+- **Contagem regressiva** — genérica: basta pôr `data-countdown="AAAA-MM-DDTHH:MM:SS-03:00"`
+  (ou `data-dias-ate` para mostrar só os dias) no HTML.
+- **Cache** — ao mudar o CSS ou o JS, trocar o `?v=` de `style.css` e `script.js` em todas as páginas.
 - **Gestão** — as 9 diretorias, cada uma com pop-up e foto do time.
 - **Contato** — página separada com formulário que encaminha a mensagem pelo WhatsApp.
 
