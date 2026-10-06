@@ -1358,21 +1358,23 @@ h1,h2,h3,h4{font-family: var(--font-display); letter-spacing: 0.5px; text-transf
   overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
 }
 
-/* Card na aba Eventos: arte pequena à esquerda, texto à direita
-   (no celular a arte vai pra cima, numa faixa baixa) */
+/* Card na aba Eventos: cartaz em pé (9:16) à esquerda, texto à direita.
+   No celular o cartaz fica em cima, centralizado e com largura limitada. */
 .ol-card-banner{
-  flex: 0 0 40%;
+  flex: 0 0 auto;
+  width: min(230px, 32%);
+  margin: 0 18px 0 6px;
   display:block;
   border-radius: 14px;
   overflow:hidden;
-  box-shadow: 0 14px 34px rgba(0,0,0,0.4);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.45);
   transition: transform 0.25s ease;
 }
 .ol-card-banner:hover{transform: translateY(-3px);}
 .ol-card-banner img{display:block; width:100%; height:auto;}
 /* mesmo ponto em que o card vira coluna (.evento-card a 860px) */
 @media (max-width: 860px){
-  .ol-card-banner{flex:none; width:100%;}
+  .ol-card-banner{width: min(210px, 62%); margin: 4px auto 0;}
 }
 
 /* Arte no topo da página */
